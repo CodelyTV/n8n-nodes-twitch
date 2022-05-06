@@ -1,0 +1,69 @@
+{
+    "name": "n8n-nodes-twitch",
+    "version": "0.1.0",
+    "description": "Twitch Trigger node to get notified about various events.",
+    "license": "LICENSE.md",
+    "homepage": "https://codely.tv",
+    "author": {
+        "name": "CodelyTV",
+        "email": "soporte@codely.tv"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/codelytv/n8n-nodes-twitch.git"
+    },
+    "main": "index.js",
+    "scripts": {
+        "dev": "npm run watch",
+        "build": "tsc && gulp",
+        "lint": "tslint -p tsconfig.json -c tslint.json",
+        "lintfix": "tslint --fix -p tsconfig.json -c tslint.json",
+        "nodelinter": "nodelinter",
+        "watch": "tsc --watch",
+        "test": "jest"
+    },
+    "files": [
+        "dist"
+    ],
+    "n8n": {
+        "credentials": [
+            "dist/credentials/TwitchApi.credentials.js"
+        ],
+        "nodes": [
+            "dist/nodes/Twitch/TwitchTrigger.node.js"
+        ]
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.6",
+        "@types/jest": "^26.0.13",
+        "@types/node": "^14.17.27",
+        "@types/request-promise-native": "~1.0.15",
+        "gulp": "^4.0.0",
+        "jest": "^26.4.2",
+        "n8n-workflow": "~0.98.0",
+        "nodelinter": "^0.1.9",
+        "ts-jest": "^26.3.0",
+        "tslint": "^6.1.2",
+        "typescript": "~4.3.5"
+    },
+    "dependencies": {
+        "n8n-core": "~0.116.0"
+    },
+    "jest": {
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "testURL": "http://localhost/",
+        "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+        "testPathIgnorePatterns": [
+            "/dist/",
+            "/node_modules/"
+        ],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "json"
+        ]
+    }
+}
