@@ -1,5 +1,5 @@
 {
-    "name": "n8n-nodes-twitch",
+    "name": "@codelytv/n8n-nodes-twitch",
     "version": "1.1.0",
     "description": "Twitch Trigger node to get notified about various events.",
     "license": "LICENSE.md",
