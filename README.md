@@ -32,9 +32,9 @@ So, if you already have a n8n instance running, you could jump to the installati
 
 Once it's installed, it will appear in the components palette, as any other component:
 
-![Component palette with Twitch Trigger Node](../docs/components.png)
+![Component palette with Twitch Trigger Node](/docs/components.png)
 
-![Trigger node options in workflow](../docs/trigger_options.png)
+![Trigger node options in workflow](/docs/trigger_options.png)
 
 # 👍 How to install
 
