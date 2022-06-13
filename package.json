@@ -1,12 +1,12 @@
 {
-    "name": "@codelytv/n8n-nodes-twitch",
+    "name": "@codelytv/n8n-node-twitch",
     "version": "1.2.2",
     "description": "Twitch Trigger node for n8n to get notified about various events.",
-    "keywords": ["n8n", "node", "twitch", "streaming", "automation", "typescript"],
+    "keywords": ["n8n", "node", "twitch", "streaming", "automation", "typescript", "n8n-community-node-package"],
     "license": "GPL-3.0",
-    "homepage": "https://github.com/codelytv/n8n-nodes-twitch#readme",
+    "homepage": "https://github.com/codelytv/n8n-node-twitch#readme",
     "bugs": {
-      "url": "https://github.com/codelytv/n8n-nodes-twitch/issues"
+      "url": "https://github.com/codelytv/n8n-node-twitch/issues"
     },
     "author": {
         "name": "CodelyTV",
@@ -14,7 +14,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/codelytv/n8n-nodes-twitch.git"
+        "url": "git+https://github.com/codelytv/n8n-node-twitch.git"
     },
     "main": "index.js",
     "scripts": {
