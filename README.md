@@ -18,7 +18,7 @@
   <br />
   <br />
   Take a look, play and have fun with this.
-  <a href="https://github.com/CodelyTV/n8n-node-twitch/stargazers">Stars are welcome 😊</a>
+  <a href="https://github.com/CodelyTV/n8n-nodes-twitch/stargazers">Stars are welcome 😊</a>
 </p>
 
 # 👀 Usage example
@@ -40,8 +40,8 @@ Once it's installed, it will appear in the components palette, as any other comp
 
 Just go to your n8n instance, find the folder where n8n is installed (if you are using the standard Docker installation, it will probably be: /usr/local/lib/node_modules/n8n) and install the package as any other npm package:
 
-- Npm: `npm i @codelytv/n8n-node-twitch`
-- Yarn: `yarn add @codelytv/n8n-node-twitch`
+- Npm: `npm i @codelytv/n8n-nodes-twitch`
+- Yarn: `yarn add @codelytv/n8n-nodes-twitch`
 
 If you want to create a custom Docker image to have it installed by default (that's what we do), you could use our Dockerfile as a base. Take a look at our custom docker image repo:
 
