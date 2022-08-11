@@ -1,8 +1,8 @@
 {
     "name": "@codelytv/n8n-nodes-twitch",
-    "version": "1.3.1",
+    "version": "1.3.2",
     "description": "Twitch Trigger node for n8n to get notified about various events.",
-    "keywords": ["n8n", "node", "twitch", "streaming", "automation", "typescript", "n8n-community-node-package"],
+    "keywords": ["n8n", "n8n-node", "n8n-nodes", "node", "twitch", "streaming", "typescript", "n8n-community-node-package"],
     "license": "GPL-3.0",
     "homepage": "https://github.com/codelytv/n8n-nodes-twitch#readme",
     "bugs": {
