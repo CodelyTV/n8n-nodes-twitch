@@ -43,9 +43,13 @@ Just go to your n8n instance, find the folder where n8n is installed (if you are
 - Npm: `npm i @codelytv/n8n-nodes-twitch`
 - Yarn: `yarn add @codelytv/n8n-nodes-twitch`
 
-If you want to create a custom Docker image to have it installed by default (that's what we do), you could use our Dockerfile as a base. Take a look at our custom docker image repo:
+If you want to create a custom Docker image to have it installed by default, you could define the following in your Dockerfile:
 
- <a href="https://github.com/CodelyTV/n8n-codely-custom-image">Simple Dockerfile for custom n8n image</a>
+```
+RUN mkdir -p ~/.n8n/nodes && \
+    cd ~/.n8n/nodes && \
+    npm install --production --force @codelytv/n8n-nodes-twitch
+```
 
 # 👌 Codely Code Quality Standards
 
@@ -57,4 +61,3 @@ Publishing this package we are committing ourselves to the following code qualit
 - ✅ **Tests** as documentation and usage examples
 - 📖 **Well documented ReadMe** showing how to install and use
 - ⚖️ **License favoring Open Source** and collaboration
-
