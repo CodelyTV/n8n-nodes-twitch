@@ -1,8 +1,6 @@
-import { OptionsWithUri } from 'request';
+import { IDataObject, IExecuteFunctions, ILoadOptionsFunctions, INodePropertyOptions, IHttpRequestOptions, IHttpRequestMethods } from 'n8n-workflow';
 
-import { IExecuteFunctions, ILoadOptionsFunctions } from 'n8n-core';
-
-import { IDataObject, IHookFunctions, IWebhookFunctions } from 'n8n-workflow';
+import { IHookFunctions, IWebhookFunctions } from 'n8n-workflow';
 
 export async function twitchApiRequest(
 	this:
@@ -14,7 +12,6 @@ export async function twitchApiRequest(
 	resource: string,
 	body: any = {},
 	query: IDataObject = {},
-	uri?: string,
 	option: IDataObject = {},
 ): Promise<any> {
 	// tslint:disable-line:no-any
@@ -24,7 +21,7 @@ export async function twitchApiRequest(
 	const clientId = credentials.clientId;
 	const clientSecret = credentials.clientSecret;
 
-	const optionsForAppToken: OptionsWithUri = {
+	const optionsForAppToken: IHttpRequestOptions = {
 		headers: {
 			'Content-Type': 'application/json',
 		},
@@ -34,14 +31,14 @@ export async function twitchApiRequest(
 			client_secret: clientSecret,
 			grant_type: 'client_credentials',
 		},
-		uri: 'https://id.twitch.tv/oauth2/token',
+		url: 'https://id.twitch.tv/oauth2/token',
 		json: true,
 	};
 
 	let appTokenResponse = null;
 
 	try {
-		appTokenResponse = await this.helpers.request!(optionsForAppToken);
+		appTokenResponse = await this.helpers.httpRequest(optionsForAppToken);
 	} catch (errorObject: any) {
 		if (errorObject.error) {
 			const errorMessage = errorObject.error.message;
@@ -53,16 +50,16 @@ export async function twitchApiRequest(
 	}
 
 	const endpoint = 'https://api.twitch.tv/helix';
-	const options: OptionsWithUri = {
+	const options: IHttpRequestOptions = {
 		headers: {
 			'Content-Type': 'application/json',
 			'Client-Id': clientId,
 			Authorization: 'Bearer ' + appTokenResponse.access_token,
 		},
-		method,
+		method: method as IHttpRequestMethods,
 		body,
 		qs: query,
-		uri: uri || `${endpoint}${resource}`,
+		url: `${endpoint}${resource}`,
 		json: true,
 	};
 	if (!Object.keys(body).length) {
@@ -73,7 +70,7 @@ export async function twitchApiRequest(
 	}
 
 	try {
-		return await this.helpers.request!(options);
+		return await this.helpers.httpRequest(options);
 	} catch (errorObject: any) {
 		if (errorObject.error) {
 			const errorMessage = errorObject.error.message;
@@ -83,4 +80,25 @@ export async function twitchApiRequest(
 		}
 		throw errorObject;
 	}
+}
+
+export async function getChannels(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+	const returnData: INodePropertyOptions[] = [];
+	const channels = await twitchApiRequest.call(this, 'GET', '/search/channels', {}, { query: this.getNodeParameter('userLogin', 0) as string});
+
+	if (channels.data === undefined) {
+		throw new Error('No channels found');
+	}
+
+	for (const channel of channels.data) {
+		const channelName = channel.display_name;
+		const channelId = channel.id;
+
+		returnData.push({
+			name: channelName,
+			value: channelId,
+		});
+	}
+
+	return returnData;
 }
