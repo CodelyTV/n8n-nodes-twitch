@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  Receive notifications when something happens in your Twitch Stream (or other's). Installing this node you'll be able to trigger automations based on "Stream goes online/offline", "new follow" and some other events.
+  Receive notifications when something happens in your Twitch Stream (or other's). Installing this node you'll be able to trigger workflows based on "Stream goes online/offline", "new follow" and some other events.
   <br />
   <br />
   Take a look, play and have fun with this.

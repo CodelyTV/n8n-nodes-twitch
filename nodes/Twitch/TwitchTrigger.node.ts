@@ -1,14 +1,4 @@
-import { IHookFunctions, IWebhookFunctions } from 'n8n-core';
-
-import {
-	ICredentialsDecrypted,
-	ICredentialTestFunctions,
-	IDataObject,
-	INodeCredentialTestResult,
-	INodeType,
-	INodeTypeDescription,
-	IWebhookResponseData,
-} from 'n8n-workflow';
+import { IHookFunctions, IWebhookFunctions, ICredentialsDecrypted, ICredentialTestFunctions, IDataObject, INodeCredentialTestResult, INodeType, INodeTypeDescription, IWebhookResponseData } from 'n8n-workflow';
 
 import { twitchApiRequest } from './GenericFunctions';
 
@@ -23,7 +13,6 @@ export class TwitchTrigger implements INodeType {
 		description: 'Handle Twitch events via webhooks',
 		defaults: {
 			name: 'Twitch Trigger',
-			color: '#5A3E85',
 		},
 		inputs: [],
 		outputs: ['main'],
@@ -129,7 +118,6 @@ export class TwitchTrigger implements INodeType {
 		},
 	};
 
-	// @ts-ignore
 	webhookMethods = {
 		default: {
 			async checkExists(this: IHookFunctions): Promise<boolean> {
