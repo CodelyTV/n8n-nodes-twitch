@@ -13,7 +13,7 @@
         "codely",
         "codelytv"
     ],
-    "license": "GPL-3.0",
+    "license": "MIT",
     "homepage": "https://github.com/codelytv/n8n-nodes-twitch#readme",
     "bugs": {
 		"url": "https://github.com/codelytv/n8n-nodes-twitch/issues"
