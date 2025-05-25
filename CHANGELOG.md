@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.5.0...v1.5.1) (2025-05-25)
+
+
+### Bug Fixes
+
+* resize documentation images* ([#8](https://github.com/CodelyTV/n8n-nodes-twitch/issues/8)) ([b1909f2](https://github.com/CodelyTV/n8n-nodes-twitch/commit/b1909f2651c3694a741970bcfdb1cbe9236d8f87))
+
 ## [1.5.0](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.4.0...v1.5.0) (2025-05-25)
 
 
