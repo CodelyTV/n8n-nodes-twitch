@@ -49,10 +49,47 @@ npm i @codelytv/n8n-nodes-twitch
 
 Add the following statement in your `Dockerfile`:
 
-```
+```dockerfile
 RUN mkdir -p ~/.n8n/nodes && \
     cd ~/.n8n/nodes && \
     npm install --production --force @codelytv/n8n-nodes-twitch
+```
+
+## c) Self-hosted n8n instance: Docker Compose / Docker Swarm with mapped volume
+
+Take into account that this option has a considerable downside:
+The workflows you create will contain `CUSTOM.twitchTrigger` as the node type reference instead of `@codelytv/n8n-nodes-twitch.twitchTrigger`. However, it could be the best approach if you want a faster feedback loop while developing.
+Take into account that localhost will not be reachable from Twitch, so you `probably are interested into exposing it with a tunnel using something like `cloudflared`, or just expose a remote host to Twitch.
+
+Docker Compose / Docker Swarm definition snippet:
+
+```yaml
+volumes:
+  n8n_data:
+    name: '{{.Service.Name}}_{{.Task.Slot}}'
+
+services:
+  n8n-main:
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - /home/codely/n8n-custom-nodes:/home/node/.n8n/custom
+```
+
+Deploy process:
+
+```bash
+CUSTOM_NODES_DIR="$HOME/n8n-custom-nodes"
+
+mkdir -p "$CUSTOM_NODES_DIR"
+
+docker run --rm \
+  --user "$(id -u):$(id -g)" \
+  -v "$CUSTOM_NODES_DIR":/data \
+  -w /data \
+  node:22-alpine \
+  sh -c "npm install @codelytv/n8n-nodes-twitch --production --silent"
+
+docker stack deploy -c n8n-swarm.yml n8n
 ```
 
 # 🔑 How to get Twitch credentials
