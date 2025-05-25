@@ -1,6 +1,13 @@
-import { IDataObject, IExecuteFunctions, ILoadOptionsFunctions, INodePropertyOptions, IHttpRequestOptions, IHttpRequestMethods } from 'n8n-workflow';
-
-import { IHookFunctions, IWebhookFunctions } from 'n8n-workflow';
+import {
+	IDataObject,
+	IExecuteFunctions,
+	IHookFunctions,
+	IHttpRequestMethods,
+	IHttpRequestOptions,
+	ILoadOptionsFunctions,
+	INodePropertyOptions,
+	IWebhookFunctions
+} from 'n8n-workflow';
 
 export async function twitchApiRequest(
 	this:

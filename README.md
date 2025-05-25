@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">
-  🛠 Twitch node for <code>n8n</code>
+  🛠 Twitch node for n8n
 </h1>
 
 <p align="center">
@@ -14,11 +14,10 @@
 </p>
 
 <p align="center">
-  Receive notifications when something happens in your Twitch Stream (or other's). Installing this node, you'll be able to trigger workflows based on "Stream goes online/offline", "new follow" and some other events.
+  Trigger workflows on stream start, stream end, new follows…
   <br />
   <br />
-  Take a look, play and have fun with this.
-  <a href="https://github.com/CodelyTV/n8n-nodes-twitch/stargazers">Stars are welcome 😊</a>
+  <a href="https://github.com/CodelyTV/n8n-nodes-twitch/stargazers">Stars welcomed 😊</a>
 </p>
 
 # 👀 n8n Twitch node features
@@ -26,15 +25,23 @@
 Once installed, you will be able to add Twitch triggers to your n8n workflows.
 
 1. Search for Twitch node:
-	 ![Twitch node in the n8n nodes panel](/docs/node.png)
+
+   <img alt="Twitch node in the n8n nodes panel" src="/docs/node.png" width="420" height="225">
 2. Select the desired trigger:
-	 ![Twitch node triggers](/docs/triggers.png)
+
+   <img alt="Twitch node triggers" src="/docs/triggers.png" width="420" height="377">
+3. Parametrize it:
+
+   <img alt="Twitch node parameters" src="/docs/node-parameters.png" width="420" height="438">
 
 # 🚀 Installation instructions
 
 This node is in the process to be officially verified by n8n.
-The installation process will be much simpler once we get that verification, but in the meantime, you have several
-options:
+The installation process will be much simpler once we get that verification,
+but in the meantime, you have several options.
+The first thing to check is the [updated n8n instructions
+on how to install community nodes](https://docs.n8n.io/integrations/community-nodes/installation/),
+and depending on your n8n setup, you could take advantage of one of the following alternatives:
 
 ## a) Self-hosted n8n instance: npm package
 

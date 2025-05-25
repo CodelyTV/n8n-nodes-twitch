@@ -1,4 +1,14 @@
-import { IHookFunctions, IWebhookFunctions, ICredentialsDecrypted, ICredentialTestFunctions, IDataObject, INodeCredentialTestResult, INodeType, INodeTypeDescription, IWebhookResponseData } from 'n8n-workflow';
+import {
+	ICredentialTestFunctions,
+	ICredentialsDecrypted,
+	IDataObject,
+	IHookFunctions,
+	INodeCredentialTestResult,
+	INodeType,
+	INodeTypeDescription,
+	IWebhookFunctions,
+	IWebhookResponseData
+} from 'n8n-workflow';
 
 import { twitchApiRequest } from './GenericFunctions.js';
 
