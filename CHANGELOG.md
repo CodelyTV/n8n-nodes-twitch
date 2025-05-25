@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.5.3](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.5.2...v1.5.3) (2025-05-25)
+
+
+### Bug Fixes
+
+* move non-necessary production dependencies to peer deps, improve docs ([#12](https://github.com/CodelyTV/n8n-nodes-twitch/issues/12)) ([215cc8e](https://github.com/CodelyTV/n8n-nodes-twitch/commit/215cc8e759185cb9d9fe7fd365c64123de1c327e))
+* move non-necessary production dependencies to peer ones* ([b200c67](https://github.com/CodelyTV/n8n-nodes-twitch/commit/b200c67e297c5e30023e7d2292d875e27e53aab3))
+* point the node documentation URL to the Readme section on how to authenticate as it is more user friendlyˆ ([27938b6](https://github.com/CodelyTV/n8n-nodes-twitch/commit/27938b6a22eba11df10646f9a35461a5b61e8eb2))
+
 ## [1.5.2](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.5.1...v1.5.2) (2025-05-25)
 
 
