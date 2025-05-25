@@ -1,73 +1,73 @@
 {
-    "name": "@codelytv/n8n-nodes-twitch",
-    "version": "1.4.0",
-    "description": "n8n node for Twitch: Execute workflows on stream start, stream end, and new follows.",
-    "keywords": [
-		"n8n",
-        "n8n-node",
-        "n8n-nodes",
-        "node",
-        "twitch",
-        "streaming",
-        "n8n-community-node-package",
-        "codely",
-        "codelytv"
+  "name": "@codelytv/n8n-nodes-twitch",
+  "version": "1.4.0",
+  "description": "n8n node for Twitch: Execute workflows on stream start, stream end, and new follows.",
+  "keywords": [
+    "n8n",
+    "n8n-node",
+    "n8n-nodes",
+    "node",
+    "twitch",
+    "streaming",
+    "n8n-community-node-package",
+    "codely",
+    "codelytv"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/codelytv/n8n-nodes-twitch#readme",
+  "bugs": {
+    "url": "https://github.com/codelytv/n8n-nodes-twitch/issues"
+  },
+  "author": {
+    "name": "CodelyTV",
+    "email": "support@codely.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codelytv/n8n-nodes-twitch.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/TwitchApi.credentials.js"
     ],
-    "license": "MIT",
-    "homepage": "https://github.com/codelytv/n8n-nodes-twitch#readme",
-    "bugs": {
-		"url": "https://github.com/codelytv/n8n-nodes-twitch/issues"
-    },
-    "author": {
-		"name": "CodelyTV",
-        "email": "support@codely.com"
-    },
-    "repository": {
-		"type": "git",
-        "url": "git+https://github.com/codelytv/n8n-nodes-twitch.git"
-    },
-	"type": "module",
-    "engines": {
-        "node": ">=20.0.0",
-        "npm": ">=10.0.0"
-    },
-    "main": "index.js",
-    "scripts": {
-        "build": "tsc && gulp build:icons",
-        "dev": "tsc --watch",
-        "format": "prettier nodes credentials --write",
-        "lint": "eslint nodes credentials package.json",
-        "lintfix": "eslint nodes credentials package.json --fix"
-    },
-    "files": [
-        "dist"
-    ],
-    "n8n": {
-		"n8nNodesApiVersion": 1,
-        "credentials": [
-            "dist/credentials/TwitchApi.credentials.js"
-        ],
-        "nodes": [
-            "dist/nodes/Twitch/TwitchTrigger.node.js"
-        ]
-    },
-    "devDependencies": {
-        "typescript": "^5.8.3",
-        "n8n-workflow": "^1.82.0",
-        "@types/express": "^5.0.2",
-        "@types/node": "^22.15.21",
-        "gulp": "^5.0.0",
-        "jsonc-eslint-parser": "^2.4.0",
-        "nodelinter": "^0.1.9",
-        "eslint": "^9.27.0",
-        "globals": "^16.1.0",
-        "eslint-plugin-jsonc": "^2.20.1",
-        "eslint-plugin-n8n-nodes-base": "^1.16.3",
-        "typescript-eslint": "^8.32.1",
-        "@typescript-eslint/eslint-plugin": "^8.32.1",
-        "@typescript-eslint/parser": "^8.32.1"
-    },
-    "dependencies": {
-        "n8n-core": "^1.14.1"
-    }
+    "nodes": [
+      "dist/nodes/Twitch/TwitchTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "n8n-workflow": "^1.82.0",
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.21",
+    "gulp": "^5.0.0",
+    "jsonc-eslint-parser": "^2.4.0",
+    "nodelinter": "^0.1.9",
+    "eslint": "^9.27.0",
+    "globals": "^16.1.0",
+    "eslint-plugin-jsonc": "^2.20.1",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "typescript-eslint": "^8.32.1",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1"
+  },
+  "dependencies": {
+    "n8n-core": "^1.14.1"
+  }
 }
