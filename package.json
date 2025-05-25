@@ -67,7 +67,7 @@
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1"
   },
-  "dependencies": {
-    "n8n-core": "^1.14.1"
+  "peerDependencies": {
+    "n8n-workflow": "*"
   }
 }
