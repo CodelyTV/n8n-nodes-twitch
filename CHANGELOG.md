@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.5.1...v1.5.2) (2025-05-25)
+
+
+### Bug Fixes
+
+* automate the release process* ([#10](https://github.com/CodelyTV/n8n-nodes-twitch/issues/10)) ([93946b3](https://github.com/CodelyTV/n8n-nodes-twitch/commit/93946b3047321125b9f0aabaee588423c15c8e0b))
+
 ## [1.5.1](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.5.0...v1.5.1) (2025-05-25)
 
 
