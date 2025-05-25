@@ -1,6 +1,6 @@
 import { IHookFunctions, IWebhookFunctions, ICredentialsDecrypted, ICredentialTestFunctions, IDataObject, INodeCredentialTestResult, INodeType, INodeTypeDescription, IWebhookResponseData } from 'n8n-workflow';
 
-import { twitchApiRequest } from './GenericFunctions';
+import { twitchApiRequest } from './GenericFunctions.js';
 
 export class TwitchTrigger implements INodeType {
 	description: INodeTypeDescription = {
