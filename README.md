@@ -9,12 +9,12 @@
 </h1>
 
 <p align="center">
-    <a href="https://github.com/CodelyTV"><img src="https://img.shields.io/badge/CodelyTV-OS-green.svg?style=flat-square" alt="Codely Open Source"/></a>
-    <a href="https://pro.codely.com"><img src="https://img.shields.io/badge/CodelyTV-PRO-black.svg?style=flat-square" alt="CodelyTV Courses"/></a>
+    <a href="https://github.com/CodelyTV"><img src="https://img.shields.io/badge/Codely-OS-green.svg?style=flat-square" alt="Codely Open Source"/></a>
+    <a href="https://pro.codely.com"><img src="https://img.shields.io/badge/Codely-Pro-black.svg?style=flat-square" alt="Codely Courses"/></a>
 </p>
 
 <p align="center">
-  Receive notifications when something happens in your Twitch Stream (or other's). Installing this node you'll be able to trigger workflows based on "Stream goes online/offline", "new follow" and some other events.
+  Receive notifications when something happens in your Twitch Stream (or other's). Installing this node, you'll be able to trigger workflows based on "Stream goes online/offline", "new follow" and some other events.
   <br />
   <br />
   Take a look, play and have fun with this.

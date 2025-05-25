@@ -7,17 +7,19 @@ on:
   pull_request:
 jobs:
   lint-test:
-    name: 🚀 Lint and test
+    name: 🚀 Lint and build
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: npm
       - name: 📥 Install dependencies
-        run: npm install
+        run: npm ci
       - name: 💅 Lint code style
         run: npm run lint
       - name: 💻 Build
@@ -50,8 +52,8 @@ jobs:
       - name: 🚀 Publish to npm
         if: ${{ steps.release.outputs.release_created }}
         run: |
-          npm install
-          npm run build --if-present
+          npm ci
+          npm run build
           npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
