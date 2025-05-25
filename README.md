@@ -5,47 +5,166 @@
 </p>
 
 <h1 align="center">
-  🛠 Twitch Trigger node for <code>n8n</code>
+  🛠 Twitch node for <code>n8n</code>
 </h1>
 
 <p align="center">
-    <a href="https://github.com/CodelyTV"><img src="https://img.shields.io/badge/CodelyTV-OS-green.svg?style=flat-square" alt="Codely Open Source"/></a>
-    <a href="https://pro.codely.com"><img src="https://img.shields.io/badge/CodelyTV-PRO-black.svg?style=flat-square" alt="CodelyTV Courses"/></a>
+    <a href="https://github.com/CodelyTV"><img src="https://img.shields.io/badge/Codely-OS-green.svg?style=flat-square" alt="Codely Open Source"/></a>
+    <a href="https://pro.codely.com"><img src="https://img.shields.io/badge/Codely-Pro-black.svg?style=flat-square" alt="Codely Courses"/></a>
 </p>
 
 <p align="center">
-  Receive notifications when something happens in your Twitch Stream (or other's). Installing this node you'll be able to trigger automations based on "Stream goes online/offline", "new follow" and some other events.
+  Receive notifications when something happens in your Twitch Stream (or other's). Installing this node, you'll be able to trigger workflows based on "Stream goes online/offline", "new follow" and some other events.
   <br />
   <br />
   Take a look, play and have fun with this.
   <a href="https://github.com/CodelyTV/n8n-nodes-twitch/stargazers">Stars are welcome 😊</a>
 </p>
 
-# 👀 Usage example
+# 👀 n8n Twitch node features
 
-Usually all the nodes you need for a certain task are already included with n8n.
-They take care of the new additions via PR and, at some point, they get added to the core packages.
+Once installed, you will be able to add Twitch triggers to your n8n workflows.
 
-There is an alternative way that is creating an npm package with just the component you want to add and install it in the n8n instance you have, which is the recommended way for custom packages that are going to be used only in your context/company/environment.
+1. Search for Twitch node:
+	 ![Twitch node in the n8n nodes panel](/docs/node.png)
+2. Select the desired trigger:
+	 ![Twitch node triggers](/docs/triggers.png)
 
-So, if you already have a n8n instance running, you could jump to the installation part and follow the instructions.
+# 🚀 Installation instructions
 
-Once it's installed, it will appear in the components palette, as any other component:
+This node is in the process to be officially verified by n8n.
+The installation process will be much simpler once we get that verification, but in the meantime, you have several
+options:
 
-![Component palette with Twitch Trigger Node](/docs/components.png)
+## a) Self-hosted n8n instance: npm package
 
-![Trigger node options in workflow](/docs/trigger_options.png)
+Go to the folder where n8n is installed (if you are using the standard Docker installation, it will probably be:
+`/usr/local/lib/node_modules/n8n`) and install the package as any other npm package:
 
-# 👍 How to install
+```bash
+npm i @codelytv/n8n-nodes-twitch
+```
 
-Just go to your n8n instance, find the folder where n8n is installed (if you are using the standard Docker installation, it will probably be: /usr/local/lib/node_modules/n8n) and install the package as any other npm package:
+## b) Self-hosted n8n instance: Custom Docker image
 
-- Npm: `npm i @codelytv/n8n-nodes-twitch`
-- Yarn: `yarn add @codelytv/n8n-nodes-twitch`
+`Dockerfile` contents example for a custom image with this node added:
 
-If you want to create a custom Docker image to have it installed by default (that's what we do), you could use our Dockerfile as a base. Take a look at our custom docker image repo:
+```dockerfile
+ARG N8N_VERSION
+FROM n8nio/n8n:${N8N_VERSION}
 
- <a href="https://github.com/CodelyTV/n8n-codely-custom-image">Simple Dockerfile for custom n8n image</a>
+RUN if [ -z "$N8N_VERSION" ]; then echo "💥 N8N_VERSION argument missing."; exit 1; fi && \
+    mkdir -p /home/node/.n8n/nodes && \
+    npm install --prefix /home/node/.n8n/nodes --production --silent @codelytv/n8n-nodes-twitch
+```
+
+## c) Self-hosted n8n instance: Docker Compose / Docker Swarm with mapped volume
+
+Take into account that this option has a considerable downside:
+The workflows you create will contain `CUSTOM.twitchTrigger` as the node type reference instead of `@codelytv/n8n-nodes-twitch.twitchTrigger`. However, it could be the best approach if you want a faster feedback loop while developing.
+Take into account that localhost will not be reachable from Twitch, so you `probably are interested into exposing it with a tunnel using something like `cloudflared`, or just expose a remote host to Twitch.
+
+Docker Compose / Docker Swarm definition snippet:
+
+```yaml
+volumes:
+  n8n_data:
+    name: '{{.Service.Name}}_{{.Task.Slot}}'
+
+services:
+  n8n-main:
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - /home/codely/n8n-custom-nodes:/home/node/.n8n/custom
+```
+
+Deploy process:
+
+```bash
+CUSTOM_NODES_DIR="$HOME/n8n-custom-nodes"
+
+mkdir -p "$CUSTOM_NODES_DIR"
+
+docker run --rm \
+  --user "$(id -u):$(id -g)" \
+  -v "$CUSTOM_NODES_DIR":/data \
+  -w /data \
+  node:22-alpine \
+  sh -c "npm install @codelytv/n8n-nodes-twitch --production --silent"
+
+docker stack deploy -c n8n-swarm.yml n8n
+```
+
+# 🔑 How to get Twitch credentials
+
+You will need to create a new Twitch application to get Client ID and Client Secret following these steps:
+
+1. Go to the [Twitch Developer Console](https://dev.twitch.tv/console/apps).
+2. Log in using your Twitch account credentials.
+3. Click on the "+ Register Your Application" button.
+4. Fill out the form as follows and click "Create":
+   - Name: Name your app (e.g., “n8nTwitchBot”).
+   - OAuth Redirect URLs: Use a valid redirect URL.
+     Something like http://localhost:5678/rest/oauth2-credential/callback works.
+     We do not plan to display Twitch authentication to end users with Oauth.
+     We're only interested in getting the Client ID and Client Secret, so it's fine to specify a local URL.
+   - Category: Application Integration
+   - Client Type: Confidential
+5. Get your credentials:
+   - Click on "Manage"
+   - Client ID: Visible right away.
+   - Client Secret: Click "New Secret" to generate one. Be sure to store this securely (it won’t be shown again).
+
+# 💻 Documentation for node contributors
+
+How to locally test this node (based on [the official n8n guide](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/)):
+
+1. Clone and move to the node development folder
+   ```bash
+   cd ~/Code/work/codely/public/
+   git clone git@github.com:CodelyTV/n8n-nodes-twitch.git
+   cd n8n-nodes-twitch
+   ```
+2. Build the node
+   ```bash
+   npm run build
+   ```
+3. Create a npm global symlink to the locally installed package 
+   ```bash
+   npm link
+   ```
+4. Install n8n locally:
+   ```bash
+   npm install n8n -g
+   ```
+5. Move to your n8n local installation
+   ```bash
+   cd ~/.n8n/
+   ```
+6. Create a custom nodes folder
+    ```bash
+    mkdir custom
+    cd custom
+7. Link the node package to the symlink previously created
+    ```bash
+    npm link @codelytv/n8n-nodes-twitch
+    ```
+8. Validate that the local n8n instance has the Twitch node pointing to the local folder
+   ```bash
+   tree -L 3 -d
+   ```
+   Expected output:
+   ```bash
+   .
+   └── node_modules
+       └── @codelytv
+           └── n8n-nodes-twitch -> ../../../../Code/work/codely/public/n8n-nodes-twitch
+   ```
+9. Run n8n
+    ```bash
+    n8n start
+    ```
+10. Enjoy!
 
 # 👌 Codely Code Quality Standards
 
@@ -57,4 +176,3 @@ Publishing this package we are committing ourselves to the following code qualit
 - ✅ **Tests** as documentation and usage examples
 - 📖 **Well documented ReadMe** showing how to install and use
 - ⚖️ **License favoring Open Source** and collaboration
-
