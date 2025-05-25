@@ -35,6 +35,7 @@ jobs:
       # Needed by googleapis/release-please-action@v4
       contents: write
       pull-requests: write
+      issues: write
       # Needed by `npm publish --provenance`
       id-token: write
     steps:
