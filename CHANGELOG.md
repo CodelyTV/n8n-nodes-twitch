@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.5.3...v1.6.0) (2025-05-26)
+
+
+### Features
+
+* add Twitch action to fetch channel streams ([#14](https://github.com/CodelyTV/n8n-nodes-twitch/issues/14)) ([7d5d57d](https://github.com/CodelyTV/n8n-nodes-twitch/commit/7d5d57dcec28d37043f71b9d39b87a548c7fa257))
+
 ## [1.5.3](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.5.2...v1.5.3) (2025-05-25)
 
 
