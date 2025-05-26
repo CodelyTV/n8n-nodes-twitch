@@ -1,6 +1,10 @@
 <p align="center">
   <a href="https://codely.com">
-    <img src="https://user-images.githubusercontent.com/10558907/170513882-a09eee57-7765-4ca4-b2dd-3c2e061fdad0.png" width="300px" height="92px"/>
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://codely.com/logo/codely_logo-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://codely.com/logo/codely_logo-light.svg">
+      <img alt="Codely logo" src="https://codely.com/logo/codely_logo.svg">
+    </picture>
   </a>
 </p>
 
@@ -9,41 +13,62 @@
 </h1>
 
 <p align="center">
-    <a href="https://github.com/CodelyTV"><img src="https://img.shields.io/badge/Codely-OS-green.svg?style=flat-square" alt="Codely Open Source"/></a>
-    <a href="https://pro.codely.com"><img src="https://img.shields.io/badge/Codely-Pro-black.svg?style=flat-square" alt="Codely Courses"/></a>
+    <a href="https://github.com/CodelyTV"><img src="https://img.shields.io/badge/Codely-OS-green.svg?style=flat-square" alt="Codely Open Source projects"/></a>
+    <a href="https://pro.codely.com"><img src="https://img.shields.io/badge/Codely-Pro-black.svg?style=flat-square" alt="Codely Pro courses"/></a>
 </p>
 
 <p align="center">
-  Trigger workflows on stream start, stream end, new follows…
-  <br />
-  <br />
+    Trigger workflows on stream start or stream end, search for Twitch streams details…
+</p>
+
+<p align="center">
   <a href="https://github.com/CodelyTV/n8n-nodes-twitch/stargazers">Stars welcomed 😊</a>
 </p>
 
 # 👀 n8n Twitch node features
 
-Once installed, you will be able to add Twitch triggers to your n8n workflows.
+Once installed, you will be able to add Twitch triggers and actions to your n8n workflows.
 
 1. Search for Twitch node:
 
-   <img alt="Twitch node in the n8n nodes panel" src="/docs/node.png" width="420" height="225">
-2. Select the desired trigger:
+   <img alt="Twitch node in the n8n nodes panel" src="/docs/node.png" width="336" height="180">
 
-   <img alt="Twitch node triggers" src="/docs/triggers.png" width="420" height="377">
+2. Select the desired action or trigger:
+
+   <img alt="Twitch node triggers" src="/docs/node-actions-and-triggers.png" width="336" height="504">
+
 3. Parametrize it:
 
-   <img alt="Twitch node parameters" src="/docs/node-parameters.png" width="420" height="438">
+   <img alt="Twitch node parameters" src="/docs/node-parameters.png" width="336" height="350">
 
 # 🚀 Installation instructions
 
 This node is in the process to be officially verified by n8n.
-The installation process will be much simpler once we get that verification,
-but in the meantime, you have several options.
-The first thing to check is the [updated n8n instructions
-on how to install community nodes](https://docs.n8n.io/integrations/community-nodes/installation/),
-and depending on your n8n setup, you could take advantage of one of the following alternatives:
+The installation process will be as simple as searching for "Twitch" in the nodes panel once we get that verification,
+but in the meantime, you have several options that depend on how you use n8n.
 
-## a) Self-hosted n8n instance: npm package
+We recommend checking out the [updated n8n instructions
+on how to install community nodes](https://docs.n8n.io/integrations/community-nodes/installation/) for possible updates to this process.
+
+## a) n8n cloud instance
+
+It is not possible to install unverified community nodes in n8n cloud ([documentation](https://docs.n8n.io/integrations/community-nodes/installation/)).
+Once we get that verification, you will be able to install this node following [this step by step](https://docs.n8n.io/integrations/community-nodes/installation/verified-install/).
+
+## b) Self-hosted n8n instance
+
+### b.a) Not using queue mode: GUI installation
+
+Follow [the official instructions](https://docs.n8n.io/integrations/community-nodes/installation/gui-install/)
+specifying `@codelytv/n8n-nodes-twitch` as the node name to install:
+
+<img alt="Twitch community node installation" src="/docs/node-installation.png" width="336" height="241">
+
+## b.b) Using queue mode
+
+### b.b.a) Install as npm package
+
+This is the officially recommended way for self-hosted n8n instances running in queue mode ([documentation](https://docs.n8n.io/integrations/community-nodes/installation/manual-install/).
 
 Go to the folder where n8n is installed (if you are using the standard Docker installation, it will probably be:
 `/usr/local/lib/node_modules/n8n`) and install the package as any other npm package:
@@ -52,7 +77,7 @@ Go to the folder where n8n is installed (if you are using the standard Docker in
 npm i @codelytv/n8n-nodes-twitch
 ```
 
-## b) Self-hosted n8n instance: Custom Docker image
+### b.b.b) Install as Custom Docker image
 
 `Dockerfile` contents example for a custom image with this node added:
 
@@ -65,7 +90,7 @@ RUN if [ -z "$N8N_VERSION" ]; then echo "💥 N8N_VERSION argument missing."; ex
     npm install --prefix /home/node/.n8n/nodes --production --silent @codelytv/n8n-nodes-twitch
 ```
 
-## c) Self-hosted n8n instance: Docker Compose / Docker Swarm with mapped volume
+### b.b.c) Install using Docker Compose / Docker Swarm with mapped volume
 
 Take into account that this option has a considerable downside:
 The workflows you create will contain `CUSTOM.twitchTrigger` as the node type reference instead of `@codelytv/n8n-nodes-twitch.twitchTrigger`. However, it could be the best approach if you want a faster feedback loop while developing.
@@ -180,6 +205,5 @@ Publishing this package we are committing ourselves to the following code qualit
 - 🤝 Respect **Semantic Versioning**: No breaking changes in patch or minor versions
 - 🤏 No surprises in transitive dependencies: Use the **bare minimum dependencies** needed to meet the purpose
 - 🎯 **One specific purpose** to meet without having to carry a bunch of unnecessary other utilities
-- ✅ **Tests** as documentation and usage examples
 - 📖 **Well documented ReadMe** showing how to install and use
 - ⚖️ **License favoring Open Source** and collaboration
