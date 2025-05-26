@@ -48,7 +48,8 @@
       "dist/credentials/TwitchApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/Twitch/TwitchTrigger.node.js"
+      "dist/nodes/Twitch/TwitchTrigger.node.js",
+      "dist/nodes/Twitch/Twitch.node.js"
     ]
   },
   "devDependencies": {
