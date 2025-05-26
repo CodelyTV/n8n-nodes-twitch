@@ -1,6 +1,6 @@
 {
   "name": "@codelytv/n8n-nodes-twitch",
-  "version": "1.5.3",
+  "version": "1.6.0",
   "description": "n8n node for Twitch: Execute workflows on stream start, stream end, and new follows.",
   "keywords": [
     "n8n",
