@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.6.0...v1.7.0) (2025-06-05)
+
+
+### Features
+
+* add actions: searchChannels, searchCategories, getGameDetails, getTopGames ([#17](https://github.com/CodelyTV/n8n-nodes-twitch/issues/17)) ([149d56f](https://github.com/CodelyTV/n8n-nodes-twitch/commit/149d56f92e81c3fc231fb7412be4a8ef559ce9af))
+
 ## [1.6.0](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.5.3...v1.6.0) (2025-05-26)
 
 
