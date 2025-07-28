@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.7.0...v1.8.0) (2025-07-28)
+
+
+### Features
+
+* add credentials test to validate credentials configuration in n8n ([#20](https://github.com/CodelyTV/n8n-nodes-twitch/issues/20)) ([34eb3cd](https://github.com/CodelyTV/n8n-nodes-twitch/commit/34eb3cd09f0ee6946b36b063bd707aedee0ac62b))
+
 ## [1.7.0](https://github.com/CodelyTV/n8n-nodes-twitch/compare/v1.6.0...v1.7.0) (2025-06-05)
 
 
