@@ -1,4 +1,5 @@
 import {
+	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
 } from 'n8n-workflow';
@@ -22,4 +23,20 @@ export class TwitchApi implements ICredentialType {
 			default: '',
 		},
 	];
+
+	test: ICredentialTestRequest = {
+		request: {
+			baseURL: 'https://id.twitch.tv',
+			url: '/oauth2/token',
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			qs: {
+				client_id: '={{$credentials.clientId}}',
+				client_secret: '={{$credentials.clientSecret}}',
+				grant_type: 'client_credentials',
+			},
+		},
+	};
 }
